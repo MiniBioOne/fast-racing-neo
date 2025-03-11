@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/PretendoNetwork/fast-racing-neo/globals"
 	"github.com/PretendoNetwork/nex-go/v2"
-	"github.com/PretendoNetwork/splatoon/globals"
 )
 
 func StartSecureServer() {
@@ -27,7 +27,7 @@ func StartSecureServer() {
 	globals.SecureEndpoint.OnData(func(packet nex.PacketInterface) {
 		request := packet.RMCMessage()
 
-		fmt.Println("==Splatoon - Secure==")
+		fmt.Println("==Fast Racing NEO - Secure==")
 		fmt.Printf("Protocol ID: %d\n", request.ProtocolID)
 		fmt.Printf("Method ID: %d\n", request.MethodID)
 		fmt.Println("===============")
@@ -41,7 +41,7 @@ func StartSecureServer() {
 
 	registerCommonSecureServerProtocols()
 
-	port, _ := strconv.Atoi(os.Getenv("PN_SPLATOON_SECURE_SERVER_PORT"))
+	port, _ := strconv.Atoi(os.Getenv("PN_FAST_RACING_NEO_SECURE_SERVER_PORT"))
 
 	globals.SecureServer.Listen(port)
 }

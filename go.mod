@@ -1,4 +1,4 @@
-module github.com/PretendoNetwork/splatoon
+module github.com/PretendoNetwork/fast-racing-neo
 
 go 1.23.0
 

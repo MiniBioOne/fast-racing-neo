@@ -1,6 +1,7 @@
 package nex
 
 import (
+	"github.com/PretendoNetwork/fast-racing-neo/globals"
 	"github.com/PretendoNetwork/nex-go/v2"
 	"github.com/PretendoNetwork/nex-go/v2/types"
 	commonmatchmaking "github.com/PretendoNetwork/nex-protocols-common-go/v2/match-making"
@@ -14,9 +15,8 @@ import (
 	match_making_types "github.com/PretendoNetwork/nex-protocols-go/v2/match-making/types"
 	matchmakeextension "github.com/PretendoNetwork/nex-protocols-go/v2/matchmake-extension"
 	nattraversal "github.com/PretendoNetwork/nex-protocols-go/v2/nat-traversal"
-	ranking "github.com/PretendoNetwork/nex-protocols-go/v2/ranking/splatoon"
+	ranking "github.com/PretendoNetwork/nex-protocols-go/v2/ranking"
 	secure "github.com/PretendoNetwork/nex-protocols-go/v2/secure-connection"
-	"github.com/PretendoNetwork/splatoon/globals"
 )
 
 func CreateReportDBRecord(_ types.PID, _ types.UInt32, _ types.QBuffer) error {
@@ -49,9 +49,9 @@ func stubGetPlayingSession(err error, packet nex.PacketInterface, callID uint32,
 }
 
 func cleanupMatchmakeSessionSearchCriteriasHandler(searchCriterias types.List[match_making_types.MatchmakeSessionSearchCriteria]) {
-	for _, searchCriteria := range searchCriterias {
-		searchCriteria.Attribs[4] = types.NewString("")
-	}
+	// for _, searchCriteria := range searchCriterias {
+	// 	searchCriteria.Attribs[4] = types.NewString("")
+	// }
 }
 
 func onAfterAutoMatchmakeWithParamPostpone(_ nex.PacketInterface, _ match_making_types.AutoMatchmakeParam) {
@@ -94,7 +94,7 @@ func registerCommonSecureServerProtocols() {
 	commonMatchmakeExtensionProtocol.OnAfterAutoMatchmakeWithParamPostpone = onAfterAutoMatchmakeWithParamPostpone
 	commonMatchmakeExtensionProtocol.SetManager(globals.MatchmakingManager)
 
-	rankingProtocol := ranking.NewProtocol(globals.SecureEndpoint)
+	rankingProtocol := ranking.NewProtocol()
 	globals.SecureEndpoint.RegisterServiceProtocol(rankingProtocol)
 	commonranking.NewCommonProtocol(rankingProtocol)
 }

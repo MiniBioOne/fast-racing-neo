@@ -1,11 +1,11 @@
 package nex
 
 import (
+	"github.com/PretendoNetwork/fast-racing-neo/globals"
 	"github.com/PretendoNetwork/nex-go/v2/constants"
 	"github.com/PretendoNetwork/nex-go/v2/types"
 	commonticketgranting "github.com/PretendoNetwork/nex-protocols-common-go/v2/ticket-granting"
 	ticketgranting "github.com/PretendoNetwork/nex-protocols-go/v2/ticket-granting"
-	"github.com/PretendoNetwork/splatoon/globals"
 	"os"
 	"strconv"
 )
@@ -15,11 +15,11 @@ func registerCommonAuthenticationServerProtocols() {
 	globals.AuthenticationEndpoint.RegisterServiceProtocol(ticketGrantingProtocol)
 	commonTicketGrantingProtocol := commonticketgranting.NewCommonProtocol(ticketGrantingProtocol)
 
-	port, _ := strconv.Atoi(os.Getenv("PN_SPLATOON_SECURE_SERVER_PORT"))
+	port, _ := strconv.Atoi(os.Getenv("PN_FAST_RACING_NEO_SECURE_SERVER_PORT"))
 
 	secureStationURL := types.NewStationURL("")
 	secureStationURL.SetURLType(constants.StationURLPRUDPS)
-	secureStationURL.SetAddress(os.Getenv("PN_SPLATOON_SECURE_SERVER_HOST"))
+	secureStationURL.SetAddress(os.Getenv("PN_FAST_RACING_NEO_SECURE_SERVER_HOST"))
 	secureStationURL.SetPortNumber(uint16(port))
 	secureStationURL.SetConnectionID(1)
 	secureStationURL.SetPrincipalID(types.NewPID(2))

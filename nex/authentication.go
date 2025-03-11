@@ -5,8 +5,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/PretendoNetwork/nex-go/v2"
-	"github.com/PretendoNetwork/splatoon/globals"
+	"github.com/PretendoNetwork/fast-racing-neo/globals"
+	
 )
 
 func StartAuthenticationServer() {
@@ -20,12 +20,12 @@ func StartAuthenticationServer() {
 	globals.AuthenticationServer.BindPRUDPEndPoint(globals.AuthenticationEndpoint)
 
 	globals.AuthenticationServer.LibraryVersions.SetDefault(nex.NewLibraryVersion(3, 8, 15))
-	globals.AuthenticationServer.AccessKey = "6f599f81"
+	globals.AuthenticationServer.AccessKey = "811aa39f"
 
 	globals.AuthenticationEndpoint.OnData(func(packet nex.PacketInterface) {
 		request := packet.RMCMessage()
 
-		fmt.Println("==Splatoon - Auth==")
+		fmt.Println("==Fast Racing NEO - Auth==")
 		fmt.Printf("Protocol ID: %#v\n", request.ProtocolID)
 		fmt.Printf("Method ID: %#v\n", request.MethodID)
 		fmt.Println("===============")
@@ -37,7 +37,7 @@ func StartAuthenticationServer() {
 
 	registerCommonAuthenticationServerProtocols()
 
-	port, _ := strconv.Atoi(os.Getenv("PN_SPLATOON_AUTHENTICATION_SERVER_PORT"))
+	port, _ := strconv.Atoi(os.Getenv("PN_FAST_RACING_NEO_AUTHENTICATION_SERVER_PORT"))
 
 	globals.AuthenticationServer.Listen(port)
 }
