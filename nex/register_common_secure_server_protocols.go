@@ -1,6 +1,9 @@
 package nex
 
 import (
+	"crypto/rand"
+	"encoding/binary"
+
 	"github.com/PretendoNetwork/fast-racing-neo/globals"
 	"github.com/PretendoNetwork/nex-go/v2"
 	"github.com/PretendoNetwork/nex-go/v2/types"
@@ -31,7 +34,14 @@ func cleanupMatchmakeSessionSearchCriteriasHandler(searchCriterias types.List[ma
 
 // thank you mr. Trace Pretendo for the knowledge
 func generateNEXUniqueIDHandler() uint64 {
-	return uint64(1000)
+	var uniqueID uint64
+
+	err := binary.Read(rand.Reader, binary.BigEndian, &uniqueID)
+	if err != nil {
+		globals.Logger.Error(err.Error())
+	}
+
+	return uniqueID
 }
 
 func onAfterAutoMatchmakeWithParamPostpone(_ nex.PacketInterface, _ match_making_types.AutoMatchmakeParam) {
