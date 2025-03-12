@@ -10,6 +10,7 @@ import (
 	commonnattraversal "github.com/PretendoNetwork/nex-protocols-common-go/v2/nat-traversal"
 	commonranking "github.com/PretendoNetwork/nex-protocols-common-go/v2/ranking"
 	commonsecure "github.com/PretendoNetwork/nex-protocols-common-go/v2/secure-connection"
+	commonutility "github.com/PretendoNetwork/nex-protocols-common-go/v2/utility"
 	matchmaking "github.com/PretendoNetwork/nex-protocols-go/v2/match-making"
 	matchmakingext "github.com/PretendoNetwork/nex-protocols-go/v2/match-making-ext"
 	match_making_types "github.com/PretendoNetwork/nex-protocols-go/v2/match-making/types"
@@ -17,6 +18,7 @@ import (
 	nattraversal "github.com/PretendoNetwork/nex-protocols-go/v2/nat-traversal"
 	ranking "github.com/PretendoNetwork/nex-protocols-go/v2/ranking"
 	secure "github.com/PretendoNetwork/nex-protocols-go/v2/secure-connection"
+	utility "github.com/PretendoNetwork/nex-protocols-go/v2/utility"
 )
 
 func CreateReportDBRecord(_ types.PID, _ types.UInt32, _ types.QBuffer) error {
@@ -93,6 +95,16 @@ func registerCommonSecureServerProtocols() {
 	commonMatchmakeExtensionProtocol.CleanupMatchmakeSessionSearchCriterias = cleanupMatchmakeSessionSearchCriteriasHandler
 	commonMatchmakeExtensionProtocol.OnAfterAutoMatchmakeWithParamPostpone = onAfterAutoMatchmakeWithParamPostpone
 	commonMatchmakeExtensionProtocol.SetManager(globals.MatchmakingManager)
+
+	utilityProtocol := utility.NewProtocol()
+	globals.SecureEndpoint.RegisterServiceProtocol(utilityProtocol)
+
+	commonUtilityProtocol := commonutility.NewCommonProtocol(utilityProtocol)
+
+	// stub because no clue what to do with this
+	commonUtilityProtocol.GenerateNEXUniqueID = func() uint64 {
+		return uint64(1000)
+	}
 
 	rankingProtocol := ranking.NewProtocol()
 	globals.SecureEndpoint.RegisterServiceProtocol(rankingProtocol)
