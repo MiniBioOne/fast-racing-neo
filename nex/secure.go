@@ -2,9 +2,10 @@ package nex
 
 import (
 	"fmt"
-	commonglobals "github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
 	"os"
 	"strconv"
+
+	commonglobals "github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
 
 	"github.com/PretendoNetwork/fast-racing-neo/globals"
 	"github.com/PretendoNetwork/nex-go/v2"
@@ -22,7 +23,7 @@ func StartSecureServer() {
 	globals.SecureServer.BindPRUDPEndPoint(globals.SecureEndpoint)
 
 	globals.SecureServer.LibraryVersions.SetDefault(nex.NewLibraryVersion(3, 9, 19))
-	globals.SecureServer.AccessKey = "6f599f81"
+	globals.SecureServer.AccessKey = "811aa39f"
 
 	globals.SecureEndpoint.OnData(func(packet nex.PacketInterface) {
 		request := packet.RMCMessage()
