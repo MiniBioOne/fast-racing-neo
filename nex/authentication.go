@@ -2,9 +2,10 @@ package nex
 
 import (
 	"fmt"
-	"github.com/PretendoNetwork/nex-go/v2"
 	"os"
 	"strconv"
+
+	"github.com/PretendoNetwork/nex-go/v2"
 
 	"github.com/PretendoNetwork/fast-racing-neo/globals"
 )
@@ -26,8 +27,8 @@ func StartAuthenticationServer() {
 		request := packet.RMCMessage()
 
 		fmt.Println("==Fast Racing NEO - Auth==")
-		fmt.Printf("Protocol ID: %#v\n", request.ProtocolID)
-		fmt.Printf("Method ID: %#v\n", request.MethodID)
+		fmt.Printf("Protocol ID: %d\n", request.ProtocolID)
+		fmt.Printf("Method ID: %d\n", request.MethodID)
 		fmt.Println("===============")
 	})
 
