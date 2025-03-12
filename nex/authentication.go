@@ -2,11 +2,11 @@ package nex
 
 import (
 	"fmt"
+	"github.com/PretendoNetwork/nex-go/v2"
 	"os"
 	"strconv"
 
 	"github.com/PretendoNetwork/fast-racing-neo/globals"
-	
 )
 
 func StartAuthenticationServer() {

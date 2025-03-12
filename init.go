@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/PretendoNetwork/fast-racing-neo/glo
+	"github.com/PretendoNetwork/fast-racing-neo/globals"
 	pb "github.com/PretendoNetwork/grpc-go/account"
 	"github.com/PretendoNetwork/plogger-go"
 	"github.com/joho/godotenv"
