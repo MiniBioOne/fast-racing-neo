@@ -56,7 +56,3 @@ All configuration options are handled via environment variables
 | `PN_FAST_RACING_NEO_FRIENDS_GRPC_HOST` | Host name for your friends server gRPC service | Yes |
 | `PN_FAST_RACING_NEO_FRIENDS_GRPC_PORT` | Port for your friends server gRPC service | Yes |
 | `PN_FAST_RACING_NEO_FRIENDS_GRPC_API_KEY` | API key for your friends server gRPC service | No (Assumed to be an open gRPC API) |
-| `PN_FAST_RACING_NEO_DATASTORE_S3BUCKET` | Name of S3 bucket for DataStore storage | Yes |
-| `PN_FAST_RACING_NEO_DATASTORE_S3KEY` | Access key for S3 service | Yes |
-| `PN_FAST_RACING_NEO_DATASTORE_S3SECRET` | Access secret for S3 service | Yes |
-| `PN_FAST_RACING_NEO_DATASTORE_S3URL` | URL to reach S3 service | Yes |
