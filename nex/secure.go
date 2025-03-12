@@ -21,7 +21,7 @@ func StartSecureServer() {
 	globals.SecureEndpoint.AccountDetailsByUsername = globals.AccountDetailsByUsername
 	globals.SecureServer.BindPRUDPEndPoint(globals.SecureEndpoint)
 
-	globals.SecureServer.LibraryVersions.SetDefault(nex.NewLibraryVersion(3, 8, 15))
+	globals.SecureServer.LibraryVersions.SetDefault(nex.NewLibraryVersion(3, 9, 19))
 	globals.SecureServer.AccessKey = "6f599f81"
 
 	globals.SecureEndpoint.OnData(func(packet nex.PacketInterface) {
