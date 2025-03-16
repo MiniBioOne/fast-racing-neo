@@ -56,3 +56,4 @@ All configuration options are handled via environment variables
 | `PN_FAST_RACING_NEO_FRIENDS_GRPC_HOST` | Host name for your friends server gRPC service | Yes |
 | `PN_FAST_RACING_NEO_FRIENDS_GRPC_PORT` | Port for your friends server gRPC service | Yes |
 | `PN_FAST_RACING_NEO_FRIENDS_GRPC_API_KEY` | API key for your friends server gRPC service | No (Assumed to be an open gRPC API) |
+| `PN_FAST_RACING_NEO_AES_KEY` | Randomly generated AES Key to validate tokens | Yes |

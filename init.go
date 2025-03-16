@@ -29,7 +29,7 @@ func init() {
 	}
 
 	authenticationServerPort := os.Getenv("PN_FAST_RACING_NEO_AUTHENTICATION_SERVER_PORT")
-	aesKey := os.Getenv("PN_FRIENDS_CONFIG_AES_KEY")
+	aesKey := os.Getenv("PN_FAST_RACING_NEO_CONFIG_AES_KEY")
 	secureServerHost := os.Getenv("PN_FAST_RACING_NEO_SECURE_SERVER_HOST")
 	secureServerPort := os.Getenv("PN_FAST_RACING_NEO_SECURE_SERVER_PORT")
 	accountGRPCHost := os.Getenv("PN_FAST_RACING_NEO_ACCOUNT_GRPC_HOST")
