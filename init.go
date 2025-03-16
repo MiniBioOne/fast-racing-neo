@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/rand"
 	"database/sql"
+	"encoding/hex"
 	"fmt"
 	"os"
 	"strconv"
@@ -28,6 +29,7 @@ func init() {
 	}
 
 	authenticationServerPort := os.Getenv("PN_FAST_RACING_NEO_AUTHENTICATION_SERVER_PORT")
+	aesKey := os.Getenv("PN_FRIENDS_CONFIG_AES_KEY")
 	secureServerHost := os.Getenv("PN_FAST_RACING_NEO_SECURE_SERVER_HOST")
 	secureServerPort := os.Getenv("PN_FAST_RACING_NEO_SECURE_SERVER_PORT")
 	accountGRPCHost := os.Getenv("PN_FAST_RACING_NEO_ACCOUNT_GRPC_HOST")
@@ -92,6 +94,17 @@ func init() {
 	} else if port < 0 || port > 65535 {
 		globals.Logger.Errorf("PN_FAST_RACING_NEO_ACCOUNT_GRPC_PORT is not a valid port. Expected 0-65535, got %s", accountGRPCPort)
 		os.Exit(0)
+	}
+
+	if strings.TrimSpace(aesKey) == "" {
+		globals.Logger.Error("PN_FRIENDS_CONFIG_AES_KEY environment variable not set")
+		os.Exit(0)
+	} else {
+		globals.AESKey, err = hex.DecodeString(os.Getenv("PN_FRIENDS_CONFIG_AES_KEY"))
+		if err != nil {
+			globals.Logger.Criticalf("Failed to decode AES key: %v", err)
+			os.Exit(0)
+		}
 	}
 
 	if strings.TrimSpace(accountGRPCAPIKey) == "" {

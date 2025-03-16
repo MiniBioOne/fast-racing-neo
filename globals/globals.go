@@ -2,9 +2,10 @@ package globals
 
 import (
 	"database/sql"
+
 	pb "github.com/PretendoNetwork/grpc-go/account"
 	"github.com/PretendoNetwork/nex-go/v2"
-	"github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
+	common_globals "github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
 	"github.com/PretendoNetwork/plogger-go"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
@@ -25,3 +26,4 @@ var GRPCAccountCommonMetadata metadata.MD
 
 var Postgres *sql.DB
 var MatchmakingManager *common_globals.MatchmakingManager
+var AESKey []byte
