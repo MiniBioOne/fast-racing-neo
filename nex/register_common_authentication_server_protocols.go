@@ -1,13 +1,14 @@
 package nex
 
 import (
+	"os"
+	"strconv"
+
 	"github.com/PretendoNetwork/fast-racing-neo/globals"
 	"github.com/PretendoNetwork/nex-go/v2/constants"
 	"github.com/PretendoNetwork/nex-go/v2/types"
 	commonticketgranting "github.com/PretendoNetwork/nex-protocols-common-go/v2/ticket-granting"
 	ticketgranting "github.com/PretendoNetwork/nex-protocols-go/v2/ticket-granting"
-	"os"
-	"strconv"
 )
 
 func registerCommonAuthenticationServerProtocols() {
@@ -27,6 +28,7 @@ func registerCommonAuthenticationServerProtocols() {
 	secureStationURL.SetStreamType(constants.StreamTypeRVSecure)
 	secureStationURL.SetType(uint8(constants.StationURLFlagPublic))
 
+	commonTicketGrantingProtocol.SetPretendoValidation(globals.AESKey)
 	commonTicketGrantingProtocol.SecureStationURL = secureStationURL
 	commonTicketGrantingProtocol.BuildName = types.NewString("branch:origin/project/wup-agmj build:3_8_15_2004_0")
 	commonTicketGrantingProtocol.SecureServerAccount = globals.SecureServerAccount

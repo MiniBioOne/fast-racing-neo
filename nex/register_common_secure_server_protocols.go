@@ -61,6 +61,7 @@ func registerCommonSecureServerProtocols() {
 	commonSecureProtocol := commonsecure.NewCommonProtocol(secureProtocol)
 
 	commonSecureProtocol.CreateReportDBRecord = CreateReportDBRecord
+	commonSecureProtocol.EnableInsecureRegister()
 
 	natTraversalProtocol := nattraversal.NewProtocol()
 	globals.SecureEndpoint.RegisterServiceProtocol(natTraversalProtocol)

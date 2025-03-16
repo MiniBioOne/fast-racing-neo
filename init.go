@@ -97,10 +97,10 @@ func init() {
 	}
 
 	if strings.TrimSpace(aesKey) == "" {
-		globals.Logger.Error("PN_FRIENDS_CONFIG_AES_KEY environment variable not set")
+		globals.Logger.Error("PN_FAST_RACING_NEO_CONFIG_AES_KEY environment variable not set")
 		os.Exit(0)
 	} else {
-		globals.AESKey, err = hex.DecodeString(os.Getenv("PN_FRIENDS_CONFIG_AES_KEY"))
+		globals.AESKey, err = hex.DecodeString(os.Getenv("PN_FAST_RACING_NEO_CONFIG_AES_KEY"))
 		if err != nil {
 			globals.Logger.Criticalf("Failed to decode AES key: %v", err)
 			os.Exit(0)
